@@ -1,22 +1,17 @@
 package com.quang.vncovid.ui.news
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.quang.vncovid.R
+import androidx.fragment.app.Fragment
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 import com.quang.vncovid.databinding.FragmentNewsBinding
-import com.quang.vncovid.databinding.FragmentStatisticBinding
-import com.quang.vncovid.ui.statistic.StatisticViewModel
 
 class NewsFragment : Fragment() {
 
-    private lateinit var newsViewModel: NewsViewModel
     private var _binding: FragmentNewsBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,16 +19,32 @@ class NewsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        newsViewModel =
-            ViewModelProvider(this).get(NewsViewModel::class.java)
 
         _binding = FragmentNewsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        newsViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
-        })
+        val tabLayout = binding.tabLayout
+        val newsViewPager = binding.newsViewPager
+
+        newsViewPager.adapter = object : FragmentStateAdapter(this) {
+            override fun getItemCount(): Int {
+                return 2
+            }
+
+            override fun createFragment(position: Int): Fragment {
+                return NewsListFragment(tab = position)
+            }
+        }
+
+        TabLayoutMediator(
+            tabLayout, newsViewPager
+        ) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Việt Nam"
+                1 -> tab.text = "Thế giới"
+            }
+        }.attach()
+
         return root
     }
 

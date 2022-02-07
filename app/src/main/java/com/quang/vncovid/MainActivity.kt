@@ -35,13 +35,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val navView = binding.navView
         val viewPager = binding.viewPager
 
+        viewPager.isUserInputEnabled = false
         viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int {
                 return 5
@@ -61,11 +61,11 @@ class MainActivity : AppCompatActivity() {
 
         navView.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_home -> viewPager.setCurrentItem(0, true)
-                R.id.navigation_statistic -> viewPager.setCurrentItem(1, true)
-                R.id.navigation_sos -> viewPager.setCurrentItem(2, true)
-                R.id.navigation_covid -> viewPager.setCurrentItem(3, true)
-                R.id.navigation_news -> viewPager.setCurrentItem(4, true)
+                R.id.navigation_home -> viewPager.setCurrentItem(0, false)
+                R.id.navigation_statistic -> viewPager.setCurrentItem(1, false)
+                R.id.navigation_sos -> viewPager.setCurrentItem(2, false)
+                R.id.navigation_covid -> viewPager.setCurrentItem(3, false)
+                R.id.navigation_news -> viewPager.setCurrentItem(4, false)
             }
 
             true
