@@ -17,9 +17,9 @@
         android:title="@string/title_sos"/>
 
     <item
-        android:id="@+id/navigation_covid"
-        android:icon="@drawable/ic_covid"
-        android:title="@string/title_covid"/>
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/ic_map"
+        android:title="@string/title_map"/>
 
     <item
         android:id="@+id/navigation_news"

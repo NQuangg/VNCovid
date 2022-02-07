@@ -1,22 +1,15 @@
 package com.quang.vncovid
 
-import android.content.res.ColorStateList
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import com.quang.vncovid.databinding.ActivityMainBinding
 import android.text.style.ForegroundColorSpan
 
 import android.text.SpannableString
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.quang.vncovid.ui.covid.CovidFragment
+import com.quang.vncovid.ui.map.MapFragment
 import com.quang.vncovid.ui.home.HomeFragment
 import com.quang.vncovid.ui.news.NewsFragment
 import com.quang.vncovid.ui.sos.SosFragment
@@ -30,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private val homeFragment = HomeFragment()
     private val statisticFragment = StatisticFragment()
     private val sosFragment = SosFragment()
-    private val covidFragment = CovidFragment()
+    private val mapFragment = MapFragment()
     private val newsFragment = NewsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                     0 -> homeFragment
                     1 -> statisticFragment
                     2 -> sosFragment
-                    3 -> covidFragment
+                    3 -> mapFragment
                     4 -> newsFragment
                     else -> homeFragment
                 }
@@ -64,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home -> viewPager.setCurrentItem(0, false)
                 R.id.navigation_statistic -> viewPager.setCurrentItem(1, false)
                 R.id.navigation_sos -> viewPager.setCurrentItem(2, false)
-                R.id.navigation_covid -> viewPager.setCurrentItem(3, false)
+                R.id.navigation_map -> viewPager.setCurrentItem(3, false)
                 R.id.navigation_news -> viewPager.setCurrentItem(4, false)
             }
 
