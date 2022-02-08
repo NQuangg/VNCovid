@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
+    android:layout_marginTop="8dp"
     android:background="@color/white"
     android:orientation="horizontal">
 
@@ -40,7 +40,5 @@
             android:ellipsize="end"
             android:maxLines="3"
             tools:text="Đánh giá cấp độ dịch của UBND TP.Hà Nội hôm nay 5.1 cho thấy thành phố chỉ còn 9 phường, xã ở cấp độ 3 - màu cam." />
-
-
     </LinearLayout>
 </LinearLayout>

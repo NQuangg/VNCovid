@@ -37,17 +37,14 @@ class NewsFragment : Fragment() {
             }
         }
 
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(p0: TabLayout.Tab?) {
+        TabLayoutMediator(
+            tabLayout, newsViewPager
+        ) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Việt Nam"
+                1 -> tab.text = "Thế giới"
             }
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-            }
-
-            override fun onTabSelected(p0: TabLayout.Tab?) {
-                newsViewPager.currentItem = tabLayout.selectedTabPosition
-            }
-        })
+        }.attach()
 
         return root
     }
