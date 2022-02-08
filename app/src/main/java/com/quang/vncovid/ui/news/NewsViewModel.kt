@@ -25,7 +25,6 @@ class NewsViewModel : ViewModel() {
         } catch (e: Exception) {
 
         }
-
     }
 
     fun getNewsWorld() {

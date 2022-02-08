@@ -33,13 +33,13 @@ class NewsAdapter :
             val context = binding.root.context
 
             Glide.with(context)
-                .load(item.ImageUrl).into(binding.imageView)
-            binding.tvTitle.text = item.Title
-            binding.tvDescription.text = Html.fromHtml(item.Description, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+                .load(item.imageUrl).into(binding.imageView)
+            binding.tvTitle.text = item.title
+            binding.tvDescription.text = Html.fromHtml(item.description, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
 
             binding.root.setOnClickListener {
                 val intent = Intent(context, NewsDetailActivity::class.java)
-                intent.putExtra("news_url", item.Url)
+                intent.putExtra("news_url", item.url)
                 context.startActivity(intent)
             }
         }
@@ -58,7 +58,7 @@ class NewsAdapter :
 class NewsModelDiffCallback : DiffUtil.ItemCallback<NewsModel>() {
 
     override fun areItemsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean {
-        return oldItem.Id == newItem.Id
+        return oldItem.id == newItem.id
     }
 
 
