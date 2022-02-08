@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.quang.vncovid.databinding.FragmentNewsBinding
 
@@ -36,14 +37,17 @@ class NewsFragment : Fragment() {
             }
         }
 
-        TabLayoutMediator(
-            tabLayout, newsViewPager
-        ) { tab, position ->
-            when (position) {
-                0 -> tab.text = "Việt Nam"
-                1 -> tab.text = "Thế giới"
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(p0: TabLayout.Tab?) {
             }
-        }.attach()
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+            }
+
+            override fun onTabSelected(p0: TabLayout.Tab?) {
+                newsViewPager.currentItem = tabLayout.selectedTabPosition
+            }
+        })
 
         return root
     }
