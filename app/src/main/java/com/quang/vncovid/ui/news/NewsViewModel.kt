@@ -11,16 +11,16 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class NewsViewModel : ViewModel() {
-    private val _newsListVN = MutableLiveData<List<NewsModel>>()
-    val newsListVN: LiveData<List<NewsModel>> = _newsListVN
+    private val _newsVNList = MutableLiveData<List<NewsModel>>()
+    val newsVNList: LiveData<List<NewsModel>> = _newsVNList
 
-    private val _newsListWorld = MutableLiveData<List<NewsModel>>()
-    val newsListWorld: LiveData<List<NewsModel>> = _newsListWorld
+    private val _newsWorldList = MutableLiveData<List<NewsModel>>()
+    val newsWorldList: LiveData<List<NewsModel>> = _newsWorldList
 
     fun getNewsVN() {
         try {
             viewModelScope.launch {
-                _newsListVN.value = apiService.getNews(8).list
+                _newsVNList.value = apiService.getNews(8).list
             }
         } catch (e: Exception) {
 
@@ -30,7 +30,7 @@ class NewsViewModel : ViewModel() {
     fun getNewsWorld() {
         try {
             viewModelScope.launch {
-                _newsListWorld.value = apiService.getNews(7).list
+                _newsWorldList.value = apiService.getNews(7).list
             }
         } catch (e: Exception) {
 

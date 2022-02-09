@@ -36,14 +36,14 @@ class NewsListFragment(val tab: Int) : Fragment() {
         val root: View = binding.root
         val newsAdapter = NewsAdapter()
         binding.recyclerView.adapter = newsAdapter
-        newsViewModel.newsListVN.observe(viewLifecycleOwner) {
+        newsViewModel.newsVNList.observe(viewLifecycleOwner) {
             if (tab == 0) {
                 newsAdapter.submitList(it)
             }
         }
 
         binding.recyclerView.adapter = newsAdapter
-        newsViewModel.newsListWorld.observe(viewLifecycleOwner) {
+        newsViewModel.newsWorldList.observe(viewLifecycleOwner) {
             if (tab == 1) {
                 newsAdapter.submitList(it)
             }

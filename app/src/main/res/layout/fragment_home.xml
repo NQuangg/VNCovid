@@ -1,275 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_background"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="TOÀN CẢNH COVID 19"
-        android:textAlignment="center"
-        android:textColor="@color/color_primary"
-        android:textSize="21sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background">
 
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_confirm"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/cv_curing"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/tv_title"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:strokeColor="@color/color_confirm"
-        app:strokeWidth="1dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/ll_curing"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TOÀN CẢNH COVID 19 VIỆT NAM"
+            android:textAlignment="center"
+            android:textColor="@color/color_primary"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_confirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/cv_curing"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_text"
-                android:textSize="16sp"
-                android:text="Số ca nhiễm" />
-
-            <TextView
-                android:id="@+id/tv_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_primary"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                tools:text="2.358.786" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:strokeColor="@color/color_confirmed"
+            app:strokeWidth="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    app:srcCompat="@drawable/ic_arrow_up" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/ll_curing"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
                 <TextView
-                    android:id="@+id/tv_plus_confirm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:text="Số ca nhiễm"
                     android:textColor="@color/color_text"
-                    tools:text="16.815" />
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="###.###"
+                    android:textColor="@color/color_primary"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:text="2.358.786" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        app:srcCompat="@drawable/ic_arrow_up" />
+
+                    <TextView
+                        android:id="@+id/tv_plus_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="###.###"
+                        android:textColor="@color/color_text"
+                        tools:text="16.815" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_curing"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cv_confirm"
-        app:layout_constraintTop_toTopOf="@+id/cv_confirm"
-        app:strokeColor="@color/color_curing"
-        app:strokeWidth="1dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_curing"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/ll_curing"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_text"
-                android:textSize="16sp"
-                android:text="Đang điều trị" />
-            
-            <TextView
-                android:id="@+id/tv_curing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_primary"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                tools:text="197.982" />
+            app:layout_constraintStart_toEndOf="@+id/cv_confirm"
+            app:layout_constraintTop_toTopOf="@+id/cv_confirm"
+            app:strokeColor="@color/color_curing"
+            app:strokeWidth="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    app:srcCompat="@drawable/ic_arrow_up" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/ll_curing"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
                 <TextView
-                    android:id="@+id/tv_plus_curing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:text="Đang điều trị"
                     android:textColor="@color/color_text"
-                    tools:text="7.050" />
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_curing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="###.###"
+                    android:textColor="@color/color_primary"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:text="197.982" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        app:srcCompat="@drawable/ic_arrow_up" />
+
+                    <TextView
+                        android:id="@+id/tv_plus_curing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="###.###"
+                        android:textColor="@color/color_text"
+                        tools:text="7.050" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_recovered"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/cv_confirm"
-        app:layout_constraintStart_toStartOf="@+id/cv_confirm"
-        app:layout_constraintTop_toBottomOf="@+id/cv_confirm"
-        app:strokeColor="@color/color_recovered"
-        app:strokeWidth="1dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_recovered"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/ll_curing"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_text"
-                android:textSize="16sp"
-                android:text="Đã khỏi bệnh" />
-
-            <TextView
-                android:id="@+id/tv_recovered"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_primary"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                tools:text="2.122.380" />
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/cv_confirm"
+            app:layout_constraintStart_toStartOf="@+id/cv_confirm"
+            app:layout_constraintTop_toBottomOf="@+id/cv_confirm"
+            app:strokeColor="@color/color_recovered"
+            app:strokeWidth="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    app:srcCompat="@drawable/ic_arrow_up" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/ll_curing"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
                 <TextView
-                    android:id="@+id/tv_plus_recovered"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:text="Đã khỏi bệnh"
                     android:textColor="@color/color_text"
-                    tools:text="9.665" />
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_recovered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="###.###"
+                    android:textColor="@color/color_primary"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:text="2.122.380" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        app:srcCompat="@drawable/ic_arrow_up" />
+
+                    <TextView
+                        android:id="@+id/tv_plus_recovered"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="###.###"
+                        android:textColor="@color/color_text"
+                        tools:text="9.665" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cv_death"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/cv_curing"
-        app:layout_constraintStart_toStartOf="@+id/cv_curing"
-        app:layout_constraintTop_toTopOf="@+id/cv_recovered"
-        app:strokeColor="@color/color_death"
-        app:strokeWidth="1dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_death"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/ll_curing"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/tv_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_text"
-                android:textSize="16sp"
-                android:text="Tử vong" />
-
-            <TextView
-                android:id="@+id/tv_death"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_primary"
-                android:textSize="21sp"
-                android:textStyle="bold"
-                tools:text="38.424" />
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/cv_curing"
+            app:layout_constraintStart_toStartOf="@+id/cv_curing"
+            app:layout_constraintTop_toTopOf="@+id/cv_recovered"
+            app:strokeColor="@color/color_death"
+            app:strokeWidth="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    app:srcCompat="@drawable/ic_arrow_up" />
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/ll_curing"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
                 <TextView
-                    android:id="@+id/tv_plus_death"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:text="Tử vong"
                     android:textColor="@color/color_text"
-                    tools:text="100" />
-            </LinearLayout>
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+                    android:textSize="16sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tv_death"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="###.###"
+                    android:textColor="@color/color_primary"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    tools:text="38.424" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        app:srcCompat="@drawable/ic_arrow_up" />
+
+                    <TextView
+                        android:id="@+id/tv_plus_death"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="###.###"
+                        android:textColor="@color/color_text"
+                        tools:text="100" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:layout_width="0dp"
+            android:layout_height="240dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/cv_death"
+            app:layout_constraintStart_toStartOf="@+id/cv_recovered"
+            app:layout_constraintTop_toBottomOf="@+id/cv_recovered" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
