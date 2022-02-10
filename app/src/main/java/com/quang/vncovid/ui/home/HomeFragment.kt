@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
         lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         lineChart.axisRight.isEnabled = false
         lineChart.axisLeft.axisMinimum = 0f
-        lineChart.axisLeft.axisMaximum = 45000f
+        lineChart.axisLeft.axisMaximum = 100000f
         lineChart.extraBottomOffset = 10f
         lineChart.data = LineData()
         lineChart.axisLeft.textSize = 12f
