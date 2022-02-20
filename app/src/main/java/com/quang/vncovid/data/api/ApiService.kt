@@ -11,7 +11,7 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("getArticles")
-    suspend fun getNews(@Field("cateId") cateId: Int, @Field("pagination[pageSize]") pageSize: Int = 10): NewsResponse
+    suspend fun getNews(@Field("cateId") cateId: Int, @Field("pagination[pageSize]") pageSize: Int = 20): NewsResponse
 
     @POST("getSummPatient")
     suspend fun getSummPatient(): SumPatientResponse

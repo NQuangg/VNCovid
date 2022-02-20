@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.custom_ui
+package com.quang.vncovid.custom_ui
 
 import android.content.Context
 import android.widget.TextView

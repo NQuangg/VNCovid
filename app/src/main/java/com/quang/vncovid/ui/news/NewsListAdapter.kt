@@ -65,6 +65,4 @@ class NewsModelDiffCallback : DiffUtil.ItemCallback<NewsModel>() {
     override fun areContentsTheSame(oldItem: NewsModel, newItem: NewsModel): Boolean {
         return oldItem == newItem
     }
-
-
 }

@@ -2,30 +2,23 @@ package com.quang.vncovid.ui.home
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
-import com.github.mikephil.charting.utils.MPPointF
 import com.quang.vncovid.R
 import com.quang.vncovid.databinding.FragmentHomeBinding
-import com.quang.vncovid.ui.custom_ui.CustomMarkerView
+import com.quang.vncovid.custom_ui.CustomMarkerView
 import com.quang.vncovid.util.formatNumber
-import java.text.DecimalFormat
 
 
 class HomeFragment : Fragment() {
