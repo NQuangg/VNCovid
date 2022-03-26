@@ -70,9 +70,10 @@ class HomeFragment : Fragment() {
             binding.tvConfirm.text = formatNumber(it.confirmed)
             binding.tvPlusConfirm.text = formatNumber(it.plusConfirmed)
 
-            binding.tvCuring.text = formatNumber(it.confirmed - it.recovered - it.death)
+            val curingNumber = it.confirmed - it.recovered - it.death
+            binding.tvCuring.text = formatNumber(if (curingNumber > 0) curingNumber else 0)
             binding.tvPlusCuring.text =
-                formatNumber(it.plusConfirmed - it.plusRecovered - it.plusDeath)
+                formatNumber(if (curingNumber > 0) curingNumber else 0)
 
             binding.tvRecovered.text = formatNumber(it.recovered)
             binding.tvPlusRecovered.text = formatNumber(it.plusRecovered)
