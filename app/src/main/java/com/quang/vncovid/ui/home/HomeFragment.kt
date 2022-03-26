@@ -87,7 +87,6 @@ class HomeFragment : Fragment() {
         lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         lineChart.axisRight.isEnabled = false
         lineChart.axisLeft.axisMinimum = 0f
-        lineChart.axisLeft.axisMaximum = 100000f
         lineChart.extraBottomOffset = 10f
         lineChart.data = LineData()
         lineChart.axisLeft.textSize = 12f
@@ -99,17 +98,34 @@ class HomeFragment : Fragment() {
                 lineChart.marker = CustomMarkerView(context, R.layout.custom_marker_view)
 
                 val chartCovidList = it.subList(it.size - 7, it.size)
+                var biggestNumber = 0f
 
                 // Số ca nhiễm
                 val confirmedLineList = mutableListOf<Entry>()
+                // Đã khỏi bệnh
+                val recoveredLineList = mutableListOf<Entry>()
+
                 chartCovidList.forEachIndexed { index, chartCovidModel ->
+                    if (biggestNumber < chartCovidModel.confirmed)
+                        biggestNumber = chartCovidModel.confirmed.toFloat()
+                    if (biggestNumber < chartCovidModel.recovered)
+                        biggestNumber = chartCovidModel.recovered.toFloat()
+
                     confirmedLineList.add(
                         Entry(
                             index.toFloat(),
                             chartCovidModel.confirmed.toFloat()
                         )
                     )
+
+                    recoveredLineList.add(
+                        Entry(
+                            index.toFloat(),
+                            chartCovidModel.recovered.toFloat()
+                        )
+                    )
                 }
+
                 val confirmedLineDataSet = LineDataSet(confirmedLineList, "Ca nhiễm")
                 confirmedLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
                 confirmedLineDataSet.setDrawValues(false)
@@ -119,16 +135,6 @@ class HomeFragment : Fragment() {
                         confirmedLineDataSet.setCircleColor(it)
                     }
 
-                // Đã khỏi bệnh
-                val recoveredLineList = mutableListOf<Entry>()
-                chartCovidList.forEachIndexed { index, chartCovidModel ->
-                    recoveredLineList.add(
-                        Entry(
-                            index.toFloat(),
-                            chartCovidModel.recovered.toFloat()
-                        )
-                    )
-                }
                 val recoveredLineDataSet = LineDataSet(recoveredLineList, "Đã khỏi")
                 recoveredLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
                 recoveredLineDataSet.setDrawValues(false)
@@ -138,25 +144,26 @@ class HomeFragment : Fragment() {
                         recoveredLineDataSet.setCircleColor(it)
                     }
 
-                // Tử vong
-                val deathLineList = mutableListOf<Entry>()
-                chartCovidList.forEachIndexed { index, chartCovidModel ->
-                    deathLineList.add(
-                        Entry(
-                            index.toFloat(),
-                            chartCovidModel.death.toFloat()
-                        )
-                    )
-                }
-                val deathLineDataSet = LineDataSet(deathLineList, "Tử vong")
-                deathLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
-                deathLineDataSet.setDrawValues(false)
-                context?.let { ContextCompat.getColor(it, R.color.color_death) }
-                    ?.let {
-                        deathLineDataSet.color = it
-                        deathLineDataSet.setCircleColor(it)
-                    }
+//                // Tử vong
+//                val deathLineList = mutableListOf<Entry>()
+//                chartCovidList.forEachIndexed { index, chartCovidModel ->
+//                    deathLineList.add(
+//                        Entry(
+//                            index.toFloat(),
+//                            chartCovidModel.death.toFloat()
+//                        )
+//                    )
+//                }
+//                val deathLineDataSet = LineDataSet(deathLineList, "Tử vong")
+//                deathLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+//                deathLineDataSet.setDrawValues(false)
+//                context?.let { ContextCompat.getColor(it, R.color.color_death) }
+//                    ?.let {
+//                        deathLineDataSet.color = it
+//                        deathLineDataSet.setCircleColor(it)
+//                    }
 
+                lineChart.axisLeft.axisMaximum = (biggestNumber * 1.2).toFloat()
                 lineChart.xAxis.valueFormatter = object : ValueFormatter() {
                     override fun getFormattedValue(value: Float): String {
                         return chartCovidList[value.toInt()].date
@@ -166,7 +173,7 @@ class HomeFragment : Fragment() {
                     mutableListOf<ILineDataSet>(
                         confirmedLineDataSet,
                         recoveredLineDataSet,
-                        deathLineDataSet
+//                        deathLineDataSet
                     )
                 )
                 lineChart.invalidate()
