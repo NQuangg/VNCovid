@@ -146,6 +146,7 @@
                     <ImageView
                         android:layout_width="12dp"
                         android:layout_height="12dp"
+                        android:visibility="invisible"
                         app:srcCompat="@drawable/ic_arrow_up" />
 
                     <TextView
@@ -155,6 +156,7 @@
                         android:layout_marginStart="4dp"
                         android:text="###.###"
                         android:textColor="@color/color_text"
+                        android:visibility="invisible"
                         tools:text="7.050" />
                 </LinearLayout>
             </LinearLayout>
