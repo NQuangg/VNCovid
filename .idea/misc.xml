@@ -3,24 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/background_progress_bar.xml" value="0.14" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/background_search_view.xml" value="0.104" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/divider_recyclerview.xml" value="0.14" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_covid.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_covid_active.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_covid_inactive.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_home.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_home_active.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_home_inactive.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_map.xml" value="0.169" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_map_active.xml" value="0.169" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_news.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_news_active.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_news_inactive.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_person_black.xml" value="0.14" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_person_blue.xml" value="0.14" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_sos.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_sos_active.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_sos_inactive.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_statistic.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_statistic_active.xml" value="0.24444444444444444" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_statistic_inactive.xml" value="0.24444444444444444" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/drawable/ic_untitled.xml" value="0.169" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/activity_splash.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_covid.xml" value="0.26268115942028986" />
-        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_map.xml" value="0.25" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_news.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_news_list.xml" value="0.13753799392097266" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/fragment_statistic.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/item_news.xml" value="0.1322463768115942" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/app/src/main/res/layout/item_statistic.xml" value="0.33" />
+        <entry key="..\:/Users/ADMIN/Desktop/VNCovid/myapplication2/src/main/res/layout/activity_main.xml" value="0.17864583333333334" />
       </map>
     </option>
   </component>

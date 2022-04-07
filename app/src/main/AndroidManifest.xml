@@ -26,7 +26,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDRsfsJlE3u5rRrn-MPlWBP76VfE_GPyqs" />

@@ -1,16 +1,21 @@
 package com.quang.vncovid
 
+import android.content.Context
+import android.graphics.Rect
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
-import com.quang.vncovid.databinding.ActivityMainBinding
-import android.text.style.ForegroundColorSpan
-
-import android.text.SpannableString
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.quang.vncovid.ui.map.MapFragment
+import com.quang.vncovid.databinding.ActivityMainBinding
 import com.quang.vncovid.ui.home.HomeFragment
+import com.quang.vncovid.ui.map.MapFragment
 import com.quang.vncovid.ui.news.NewsFragment
 import com.quang.vncovid.ui.sos.SosFragment
 import com.quang.vncovid.ui.statistic.StatisticFragment
@@ -83,5 +88,22 @@ class MainActivity : AppCompatActivity() {
         val string = SpannableString("SOS")
         string.setSpan(ForegroundColorSpan(getColor(colorId)), 0, string.length, 0)
         return string
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_DOWN) {
+            val v: View? = currentFocus
+            if (v is EditText) {
+                val outRect = Rect()
+                v.getGlobalVisibleRect(outRect)
+                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
+                    v.clearFocus()
+                    val imm: InputMethodManager =
+                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
+                }
+            }
+        }
+        return super.dispatchTouchEvent(event)
     }
 }

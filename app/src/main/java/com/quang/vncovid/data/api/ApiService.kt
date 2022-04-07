@@ -2,6 +2,7 @@ package com.quang.vncovid.data.api
 
 import com.quang.vncovid.data.model.ChartCovidResponse
 import com.quang.vncovid.data.model.NewsResponse
+import com.quang.vncovid.data.model.ProvinceResponse
 import com.quang.vncovid.data.model.SumPatientResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -18,4 +19,7 @@ interface ApiService {
 
     @POST("GetChartCovid")
     suspend fun getChartCovid(): ChartCovidResponse
+
+    @POST("getAllPatientProvinces")
+    suspend fun getAllPatientProvinces(): ProvinceResponse
 }

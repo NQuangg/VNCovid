@@ -17,4 +17,6 @@
     <color name="color_curing">#FFFFCF4F</color>
     <color name="color_recovered">#FF72D556</color>
     <color name="color_death">#FF0D0D0D</color>
+
+    <color name="color_gray">#FFC4C4C4</color>
 </resources>
