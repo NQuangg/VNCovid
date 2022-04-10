@@ -11,7 +11,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/background_search_view">
+        android:background="@drawable/background_item_statistic">
 
         <TextView
             android:id="@+id/tv_province"

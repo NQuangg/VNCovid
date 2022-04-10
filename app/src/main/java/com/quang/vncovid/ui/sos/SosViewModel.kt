@@ -3,11 +3,35 @@ package com.quang.vncovid.ui.sos
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.quang.vncovid.data.api.apiService
+import com.quang.vncovid.data.model.ContactModel
+import com.quang.vncovid.data.model.ProvinceModel
+import com.quang.vncovid.data.model.listContactModel
+import com.quang.vncovid.util.VNCharacterUtils
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class SosViewModel : ViewModel() {
+    private val _allContacts = MutableLiveData<List<ContactModel>>()
+    val allContacts: LiveData<List<ContactModel>> = _allContacts
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is sos Fragment"
+    fun getContacts() {
+        try {
+            viewModelScope.launch {
+                _allContacts.value = listContactModel
+            }
+        } catch (e: Exception) {
+
+        }
     }
-    val text: LiveData<String> = _text
+
+    fun searchContacts(provinceName: String) {
+        val searchString = VNCharacterUtils.convert(provinceName)
+
+        _allContacts.value = listContactModel.filter {
+            val provinceString = VNCharacterUtils.convert(it.name)
+            provinceString.contains(searchString)
+        }
+    }
 }
