@@ -11,8 +11,7 @@ class NewsDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewsDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         var newsUrl = intent.getStringExtra("news_url") ?: ""
         newsUrl = newsUrl.replace("https://thanhnien", "https://m.thanhnien")

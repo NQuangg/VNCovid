@@ -83,7 +83,6 @@ class LoginActivity : AppCompatActivity() {
                     FirebaseAuth.getInstance().signInWithCredential(credential)
                         .addOnCompleteListener(this) { task ->
                             if (task.isSuccessful) {
-                                Log.d("QUANGGG", "signInWithCredential:success")
                                 val user = task.result?.user
                                 val phoneNumber = user?.phoneNumber!!
 

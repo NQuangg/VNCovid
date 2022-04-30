@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VNCovid">
         <activity
+            android:name=".activity.DetailReportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ProfileActivity"
             android:exported="false" />
         <activity
