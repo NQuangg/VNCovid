@@ -1,20 +1,11 @@
 package com.quang.vncovid.ui.statistic
 
-import android.content.Context
-import android.content.Intent
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.quang.vncovid.NewsDetailActivity
-import com.quang.vncovid.R
-import com.quang.vncovid.data.model.NewsModel
 import com.quang.vncovid.data.model.ProvinceModel
-import com.quang.vncovid.databinding.ItemNewsBinding
 import com.quang.vncovid.databinding.ItemStatisticBinding
 import com.quang.vncovid.util.formatNumber
 

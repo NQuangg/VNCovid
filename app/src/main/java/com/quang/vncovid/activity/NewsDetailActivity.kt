@@ -1,8 +1,7 @@
-package com.quang.vncovid
+package com.quang.vncovid.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.quang.vncovid.databinding.ActivityMainBinding
 import com.quang.vncovid.databinding.ActivityNewsDetailBinding
 
 class NewsDetailActivity : AppCompatActivity() {

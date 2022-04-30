@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.quang.vncovid.data.model.ContactModel
-import com.quang.vncovid.data.model.ProvinceModel
-import com.quang.vncovid.databinding.ItemSosBinding
-import com.quang.vncovid.databinding.ItemStatisticBinding
-import com.quang.vncovid.util.formatNumber
+import com.quang.vncovid.databinding.ItemContactBinding
 
-class SosAdapter :
-    ListAdapter<ContactModel, SosAdapter.ViewHolder>(ContactModelDiffCallback()) {
+class ContactAdapter :
+    ListAdapter<ContactModel, ContactAdapter.ViewHolder>(ContactModelDiffCallback()) {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
@@ -25,7 +22,7 @@ class SosAdapter :
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(val binding: ItemSosBinding) :
+    class ViewHolder private constructor(val binding: ItemContactBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ContactModel) {
             binding.tvName.text = item.name
@@ -40,7 +37,7 @@ class SosAdapter :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemSosBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemContactBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

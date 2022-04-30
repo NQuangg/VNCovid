@@ -1,18 +1,16 @@
-package com.quang.vncovid.ui.sos
+package com.quang.vncovid.ui.sos.tab_contact
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.quang.vncovid.data.api.apiService
 import com.quang.vncovid.data.model.ContactModel
-import com.quang.vncovid.data.model.ProvinceModel
 import com.quang.vncovid.data.model.listContactModel
 import com.quang.vncovid.util.VNCharacterUtils
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class SosViewModel : ViewModel() {
+class ContactViewModel : ViewModel()  {
     private val _allContacts = MutableLiveData<List<ContactModel>>()
     val allContacts: LiveData<List<ContactModel>> = _allContacts
 

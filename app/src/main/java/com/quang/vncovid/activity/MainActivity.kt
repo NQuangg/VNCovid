@@ -1,4 +1,4 @@
-package com.quang.vncovid
+package com.quang.vncovid.activity
 
 import android.content.Context
 import android.graphics.Rect
@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.quang.vncovid.R
 import com.quang.vncovid.databinding.ActivityMainBinding
 import com.quang.vncovid.ui.home.HomeFragment
 import com.quang.vncovid.ui.map.MapFragment
