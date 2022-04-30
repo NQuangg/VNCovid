@@ -1,6 +1,7 @@
 package com.quang.vncovid.activity
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
 import android.text.SpannableString
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 import com.quang.vncovid.R
 import com.quang.vncovid.databinding.ActivityMainBinding
 import com.quang.vncovid.ui.home.HomeFragment
@@ -74,6 +77,12 @@ class MainActivity : AppCompatActivity() {
         val menu = navView.menu
         menu.forEach {
             it.setOnMenuItemClickListener {
+                if (it.itemId == R.id.navigation_home) {
+                    binding.fab.visibility = View.VISIBLE
+                } else {
+                    binding.fab.visibility = View.GONE
+                }
+
                 if (it.itemId == R.id.navigation_sos) {
                     menu.getItem(2).title = setSosTitle(R.color.sos_icon)
                 } else {
@@ -81,6 +90,17 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 false
+            }
+        }
+
+        binding.fab.setOnClickListener {
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            if (currentUser == null) {
+                startActivity(Intent(this, LoginActivity::class.java))
+            } else {
+                val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra("phone_number", currentUser.phoneNumber)
+                startActivity(intent)
             }
         }
     }

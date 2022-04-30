@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1033585799723",
+    "project_id": "vncovid",
+    "storage_bucket": "vncovid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033585799723:android:4d29a98c4d24275bb5306e",
+        "android_client_info": {
+          "package_name": "com.quang.vncovid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033585799723-7cdtq6nu4cvss4dj930jt2v87vuv8ff5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.quang.vncovid",
+            "certificate_hash": "fc7840131ba2dec044d427a528ae170f301f9e56"
+          }
+        },
+        {
+          "client_id": "1033585799723-llo1caasai4dtb6v2302e2jt1qv4kjeo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-gGMPAraaGxZO4ZifwEwYmLM6ouLTFao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033585799723-llo1caasai4dtb6v2302e2jt1qv4kjeo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
