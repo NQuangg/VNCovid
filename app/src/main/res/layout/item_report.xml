@@ -77,7 +77,7 @@
                 android:id="@+id/tv_title_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Triệu chứng Covid: "
+                android:text="Triệu chứng Covid"
                 android:textColor="@color/color_text"
                 app:layout_constraintBottom_toTopOf="@+id/tv_title_3"
                 app:layout_constraintEnd_toEndOf="@+id/tv_title_3"
@@ -89,7 +89,7 @@
                 android:id="@+id/tv_title_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Đi đến vùng dịch: "
+                android:text="Đi đến vùng khác"
                 android:textColor="@color/color_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/tv_title_1"
@@ -101,37 +101,37 @@
                 android:id="@+id/tv_communicate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=" : Có"
+                android:layout_marginStart="4dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_title_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_title_1"
                 app:layout_constraintTop_toTopOf="@+id/tv_title_1"
-                tools:text=" : Có"
+                tools:text=": Có"
                 tools:textColor="@color/yes_color" />
 
             <TextView
                 android:id="@+id/tv_place"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=" : "
                 app:layout_constraintBottom_toBottomOf="@+id/tv_title_3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_title_3"
                 app:layout_constraintTop_toTopOf="@+id/tv_title_3"
-                tools:text=" : Không"
+                android:layout_marginStart="4dp"
+                tools:text=": Không"
                 tools:textColor="@color/no_color" />
 
             <TextView
                 android:id="@+id/tv_symptom"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text=" : "
+                android:layout_marginStart="4dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_title_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_title_2"
                 app:layout_constraintTop_toTopOf="@+id/tv_title_2"
-                tools:text=" : Có"
+                tools:text=": Có"
                 tools:textColor="@color/yes_color" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

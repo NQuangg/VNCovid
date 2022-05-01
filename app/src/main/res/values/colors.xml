@@ -23,4 +23,6 @@
     <color name="report_color">#9CD7F6</color>
     <color name="yes_color">#EE4B2B</color>
     <color name="no_color">#8AC0DD</color>
+
+    <color name="loading_color">#33000000</color>
 </resources>

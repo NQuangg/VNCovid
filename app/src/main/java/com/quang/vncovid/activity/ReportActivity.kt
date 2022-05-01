@@ -4,15 +4,18 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.quang.vncovid.R
 import com.quang.vncovid.adapter.ReportAdapter
 import com.quang.vncovid.data.model.ReportModel
@@ -25,6 +28,7 @@ class ReportActivity : AppCompatActivity() {
     private lateinit var reportAdapter: ReportAdapter
     private val phoneNumber = FirebaseAuth.getInstance().currentUser?.phoneNumber ?: "+84989767127"
     private val firestore = FirebaseFirestore.getInstance()
+    private lateinit var tvNoItem: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +36,8 @@ class ReportActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val recyclerView = binding.recyclerView
+        tvNoItem =   binding.tvNoItem
 
         val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -67,8 +73,8 @@ class ReportActivity : AppCompatActivity() {
         })
 
         reportAdapter = ReportAdapter(launcher)
-        binding.recyclerView.adapter = reportAdapter
-        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
+        recyclerView.adapter = reportAdapter
+        itemTouchHelper.attachToRecyclerView(recyclerView)
         getData()
 
         binding.fab.setOnClickListener {
@@ -80,7 +86,7 @@ class ReportActivity : AppCompatActivity() {
         listReport.clear()
         val loading = binding.componentLoading.loading
         val docRef = firestore.collection("account").document(phoneNumber).collection("report")
-        docRef.get()
+        docRef.orderBy("date", Query.Direction.DESCENDING).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val reportModel = document.toObject(ReportModel::class.java)
@@ -89,24 +95,31 @@ class ReportActivity : AppCompatActivity() {
                 }
 
                 reportAdapter.submitList(listReport)
+                reportAdapter.notifyItemRangeChanged(0, listReport.size)
+
                 loading.visibility = View.GONE
+                if (listReport.isEmpty()) {
+                    tvNoItem.visibility = View.VISIBLE
+                } else {
+                    tvNoItem.visibility = View.GONE
+                }
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(this, "Có lỗi xảy ra.", Toast.LENGTH_SHORT).show()
                 loading.visibility = View.GONE
             }
-
     }
 
     private fun removeItem(position: Int) {
         val item = reportAdapter.currentList[position]
         val docRef = firestore.collection("account").document(phoneNumber).collection("report").document(item.id)
         docRef.delete()
-            .addOnSuccessListener { result ->
+            .addOnSuccessListener {
                 listReport.removeAt(position)
                 reportAdapter.notifyItemRemoved(position)
+                Toast.makeText(this, "Xóa thành công", Toast.LENGTH_SHORT).show()
             }
-            .addOnFailureListener { exception ->
+            .addOnFailureListener {
                 Toast.makeText(this, "Có lỗi xảy ra.", Toast.LENGTH_SHORT).show()
             }
     }
@@ -120,12 +133,9 @@ class ReportActivity : AppCompatActivity() {
         if (item.itemId == R.id.logout) {
             FirebaseAuth.getInstance().signOut()
             finish()
+        } else {
+            finish()
         }
         return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish();
-        return true;
     }
 }
