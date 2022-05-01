@@ -25,4 +25,6 @@
     <color name="no_color">#8AC0DD</color>
 
     <color name="loading_color">#33000000</color>
+
+    <color name="marker_color">#EC1F26</color>
 </resources>

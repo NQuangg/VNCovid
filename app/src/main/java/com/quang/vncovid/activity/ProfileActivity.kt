@@ -41,8 +41,8 @@ class ProfileActivity : AppCompatActivity() {
         val phoneNumber = FirebaseAuth.getInstance().currentUser?.phoneNumber ?: "+84989767127"
         val firestore = FirebaseFirestore.getInstance()
 
-        val docRef = firestore.collection("account").document(phoneNumber)
-        docRef.get()
+        firestore.collection("account").document(phoneNumber)
+            .get()
             .addOnSuccessListener { document ->
                 val userModel = document.toObject(UserModel::class.java)
                 if (userModel != null) {
@@ -68,11 +68,12 @@ class ProfileActivity : AppCompatActivity() {
 
         etBirthday.setOnClickListener {
             val dateString = etBirthday.text.toString()
-            val date =  LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+            val date = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
             DatePickerDialog(
                 this,
                 { _, year, month, day ->
-                    val selectedDateString = "${if (day < 10) "0$day" else day}/${if (month < 10) "0$month" else month}/$year"
+                    val selectedDateString =
+                        "${if (day < 10) "0$day" else day}/${if (month < 10) "0$month" else month}/$year"
                     etBirthday.setText(selectedDateString)
                 },
                 date.year,

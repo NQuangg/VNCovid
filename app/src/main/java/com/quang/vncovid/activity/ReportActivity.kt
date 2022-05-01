@@ -37,19 +37,20 @@ class ReportActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val recyclerView = binding.recyclerView
-        tvNoItem =   binding.tvNoItem
+        tvNoItem = binding.tvNoItem
 
-        val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                if (data?.getBooleanExtra("create_or_update", false) == true) {
-                    getData()
+        val launcher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val data: Intent? = result.data
+                    if (data?.getBooleanExtra("create_or_update", false) == true) {
+                        getData()
+                    }
                 }
             }
-        }
 
 
-        val itemTouchHelper =  ItemTouchHelper(object: ItemTouchHelper.Callback() {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
             override fun getMovementFlags(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder
@@ -85,8 +86,8 @@ class ReportActivity : AppCompatActivity() {
     private fun getData() {
         listReport.clear()
         val loading = binding.componentLoading.loading
-        val docRef = firestore.collection("account").document(phoneNumber).collection("report")
-        docRef.orderBy("date", Query.Direction.DESCENDING).get()
+        firestore.collection("account").document(phoneNumber).collection("report")
+            .orderBy("date", Query.Direction.DESCENDING).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val reportModel = document.toObject(ReportModel::class.java)
@@ -112,8 +113,8 @@ class ReportActivity : AppCompatActivity() {
 
     private fun removeItem(position: Int) {
         val item = reportAdapter.currentList[position]
-        val docRef = firestore.collection("account").document(phoneNumber).collection("report").document(item.id)
-        docRef.delete()
+        firestore.collection("account").document(phoneNumber).collection("report").document(item.id)
+            .delete()
             .addOnSuccessListener {
                 listReport.removeAt(position)
                 reportAdapter.notifyItemRemoved(position)

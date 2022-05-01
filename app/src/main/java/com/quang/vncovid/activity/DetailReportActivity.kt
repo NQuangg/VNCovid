@@ -118,10 +118,10 @@ class DetailReportActivity : AppCompatActivity() {
                     FirebaseAuth.getInstance().currentUser?.phoneNumber ?: "+84989767127"
                 val firestore = FirebaseFirestore.getInstance()
                 if (intent?.getStringExtra("report") != null) {
-                    val report = Gson().fromJson(intent.getStringExtra("report"), ReportModel::class.java)
+                    val report =
+                        Gson().fromJson(intent.getStringExtra("report"), ReportModel::class.java)
 
-                    val docRef =
-                        firestore.collection("account").document(phoneNumber).collection("report")
+
                     val updateReport = ReportModel(
                         id = report.id,
                         date = report.date,
@@ -134,7 +134,8 @@ class DetailReportActivity : AppCompatActivity() {
                         throughPlace = throughPlace,
                     )
 
-                    docRef.document(report.id).set(updateReport)
+                    firestore.collection("account").document(phoneNumber).collection("report")
+                        .document(report.id).set(updateReport)
                         .addOnSuccessListener { result ->
                             Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
                             setResult(RESULT_OK, Intent().apply {
@@ -148,7 +149,6 @@ class DetailReportActivity : AppCompatActivity() {
                         }
 
                 } else {
-
                     val docRef =
                         firestore.collection("account").document(phoneNumber).collection("report")
                     val documentId = docRef.document().id
