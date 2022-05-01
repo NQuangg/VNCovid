@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private val statisticFragment = StatisticFragment()
     private val sosFragment = SosFragment()
     private val mapFragment = MapFragment()
-    private val newsFragment = NewsFragment()
+//    private val newsFragment = NewsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                     1 -> statisticFragment
                     2 -> sosFragment
                     3 -> mapFragment
-                    4 -> newsFragment
+//                    4 -> newsFragment
                     else -> homeFragment
                 }
             }
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_statistic -> viewPager.setCurrentItem(1, false)
                 R.id.navigation_sos -> viewPager.setCurrentItem(2, false)
                 R.id.navigation_map -> viewPager.setCurrentItem(3, false)
-                R.id.navigation_news -> viewPager.setCurrentItem(4, false)
+//                R.id.navigation_news -> viewPager.setCurrentItem(4, false)
             }
 
             true

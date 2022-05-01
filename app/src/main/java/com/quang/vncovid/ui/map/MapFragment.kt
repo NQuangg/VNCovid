@@ -2,18 +2,19 @@ package com.quang.vncovid.ui.map
 
 import android.Manifest
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.location.Location
-import android.location.LocationManager
-import android.location.LocationRequest
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.quang.vncovid.BuildConfig
 import com.quang.vncovid.R
 import com.quang.vncovid.data.model.listMarkerModel
 import com.quang.vncovid.databinding.FragmentMapBinding
@@ -34,6 +36,58 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
 
     private lateinit var googleMap: GoogleMap
+    private var isFirstRequest = true
+    private val locationPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+                // Precise location access granted.
+                requestLocation()
+            }
+            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+                // Only approximate location access granted.
+                requestLocation()
+            }
+            else -> {
+                // No location access granted.
+                AlertDialog.Builder(requireContext())
+                    .setTitle("Chức năng cần sử dụng vị trí hiện tại của bạn")
+                    .setNegativeButton(
+                        "Hủy"
+                    ) { p0, p1 -> }
+                    .setPositiveButton(
+                        "Đồng ý"
+                    ) { p0, p1 ->
+                        val uri: Uri = Uri.fromParts("package", BuildConfig.APPLICATION_ID, null)
+                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri)
+                        startActivity(intent)
+                    }
+                    .create()
+                    .show()
+
+
+            }
+        }
+        isFirstRequest = false
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isFirstRequest) {
+            locationPermissionRequest.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                )
+            )
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        isFirstRequest = true
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,23 +98,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         _binding = FragmentMapBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val locationPermissionRequest = registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { permissions ->
-            when {
-                permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                    // Precise location access granted.
-                    requestLocation()
-                }
-                permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                    // Only approximate location access granted.
-                    requestLocation()
-                }
-                else -> {
-                    // No location access granted.
-                }
-            }
-        }
+
 
         locationPermissionRequest.launch(
             arrayOf(
@@ -93,6 +131,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
 
         this.googleMap = googleMap
+        googleMap.moveCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    21.030653,
+                    105.847130
+                ), 15f
+            )
+        )
     }
 
     private fun requestLocation() {
@@ -110,7 +156,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             client.lastLocation.addOnCompleteListener {
                 val location = it.result
                 if (location != null) {
-                    googleMap.moveCamera(
+                    googleMap.animateCamera(
                         CameraUpdateFactory.newLatLngZoom(
                             LatLng(
                                 location.latitude,
@@ -126,7 +172,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun getMapStyle() : String {
+    private fun getMapStyle(): String {
         return "[\n" +
                 "  {\n" +
                 "    \"featureType\": \"administrative\",\n" +
