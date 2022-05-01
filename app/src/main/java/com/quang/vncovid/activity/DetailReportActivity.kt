@@ -136,14 +136,14 @@ class DetailReportActivity : AppCompatActivity() {
 
                     firestore.collection("account").document(phoneNumber).collection("report")
                         .document(report.id).set(updateReport)
-                        .addOnSuccessListener { result ->
+                        .addOnSuccessListener {
                             Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
                             setResult(RESULT_OK, Intent().apply {
                                 putExtra("create_or_update", true)
                             })
                             finish()
                         }
-                        .addOnFailureListener { exception ->
+                        .addOnFailureListener {
                             isConfirm = true
                             Toast.makeText(this, "Có lỗi xảy ra.", Toast.LENGTH_SHORT).show()
                         }
@@ -164,14 +164,14 @@ class DetailReportActivity : AppCompatActivity() {
                         throughPlace = throughPlace,
                     )
                     docRef.document().set(newReport)
-                        .addOnSuccessListener { result ->
+                        .addOnSuccessListener {
                             Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show()
                             setResult(RESULT_OK, Intent().apply {
                                 putExtra("create_or_update", true)
                             })
                             finish()
                         }
-                        .addOnFailureListener { exception ->
+                        .addOnFailureListener {
                             isConfirm = true
                             Toast.makeText(this, "Có lỗi xảy ra.", Toast.LENGTH_SHORT).show()
                         }

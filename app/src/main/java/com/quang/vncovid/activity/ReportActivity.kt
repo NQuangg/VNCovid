@@ -105,7 +105,7 @@ class ReportActivity : AppCompatActivity() {
                     tvNoItem.visibility = View.GONE
                 }
             }
-            .addOnFailureListener { exception ->
+            .addOnFailureListener {
                 Toast.makeText(this, "Có lỗi xảy ra.", Toast.LENGTH_SHORT).show()
                 loading.visibility = View.GONE
             }

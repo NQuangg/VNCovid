@@ -28,9 +28,9 @@ class ContactAdapter :
             binding.tvName.text = item.name
             binding.tvPhoneNumber.text = item.phoneNumber
 
-            binding.ibPhone.setOnClickListener {
+            binding.cvPhone.setOnClickListener {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + item.phoneNumber))
-                binding.ibPhone.context.startActivity(intent)
+                binding.root.context.startActivity(intent)
             }
         }
 

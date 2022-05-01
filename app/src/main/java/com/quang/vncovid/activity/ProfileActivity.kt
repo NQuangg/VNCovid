@@ -61,7 +61,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
                 loading.visibility = View.GONE
             }
-            .addOnFailureListener { exception ->
+            .addOnFailureListener {
                 Toast.makeText(this, "Có lỗi xảy ra.", Toast.LENGTH_SHORT).show()
                 loading.visibility = View.GONE
             }
@@ -108,7 +108,7 @@ class ProfileActivity : AppCompatActivity() {
                             startActivity(Intent(this, ReportActivity::class.java))
                             finish()
                         }
-                        .addOnFailureListener { e ->
+                        .addOnFailureListener {
                             loading.visibility = View.GONE
                             Toast.makeText(
                                 this,
