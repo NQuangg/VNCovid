@@ -1,6 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:contentPadding="12dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_title_1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_report"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="@color/color_text"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="01" />
+
+                    <TextView
+                        android:id="@+id/tv_month_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:textColor="@color/color_text"
+                        android:textSize="16sp"
+                        tools:text="05/2022" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Tiếp xúc với người bệnh"
+                android:textColor="@color/color_text"
+                app:layout_constraintBottom_toTopOf="@+id/tv_title_2"
+                app:layout_constraintEnd_toStartOf="@+id/tv_communicate"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/frameLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_title_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Triệu chứng Covid: "
+                android:textColor="@color/color_text"
+                app:layout_constraintBottom_toTopOf="@+id/tv_title_3"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title_3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_title_3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_1" />
+
+            <TextView
+                android:id="@+id/tv_title_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Đi đến vùng dịch: "
+                android:textColor="@color/color_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title_1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/tv_title_1"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_2" />
+
+            <TextView
+                android:id="@+id/tv_communicate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=" : Có"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_1"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_1"
+                tools:text=" : Có"
+                tools:textColor="@color/yes_color" />
+
+            <TextView
+                android:id="@+id/tv_place"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=" : "
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_3"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_3"
+                tools:text=" : Không"
+                tools:textColor="@color/no_color" />
+
+            <TextView
+                android:id="@+id/tv_symptom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text=" : "
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_2"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_2"
+                tools:text=" : Có"
+                tools:textColor="@color/yes_color" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

@@ -38,7 +38,7 @@ class ProfileActivity : AppCompatActivity() {
         val etAddress = binding.etAddress
         val loading = binding.componentLoading.loading
 
-        val phoneNumber = FirebaseAuth.getInstance().currentUser?.phoneNumber ?: "0989767127"
+        val phoneNumber = FirebaseAuth.getInstance().currentUser?.phoneNumber ?: "+84989767127"
         val firestore = FirebaseFirestore.getInstance()
 
         val docRef = firestore.collection("account").document(phoneNumber)

@@ -2,7 +2,7 @@
 <resources>
     <color name="color_primary">#FF1573A6</color>
     <color name="color_primary_variant">#035D8E</color>
-    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_200">#8AC0DD</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
@@ -19,4 +19,8 @@
     <color name="color_death">#FF0D0D0D</color>
 
     <color name="color_gray">#FFC4C4C4</color>
+
+    <color name="report_color">#9CD7F6</color>
+    <color name="yes_color">#EE4B2B</color>
+    <color name="no_color">#8AC0DD</color>
 </resources>
