@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.AdapterListUpdateCallback
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,10 +13,9 @@ import com.quang.vncovid.R
 import com.quang.vncovid.activity.DetailReportActivity
 import com.quang.vncovid.data.model.ReportModel
 import com.quang.vncovid.databinding.ItemReportBinding
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneId
+import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class ReportAdapter(val launcher: ActivityResultLauncher<Intent>): ListAdapter<ReportModel, ReportAdapter.ViewHolder>(ReportModelDiffCallback()) {
@@ -35,37 +33,32 @@ class ReportAdapter(val launcher: ActivityResultLauncher<Intent>): ListAdapter<R
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ReportModel, launcher: ActivityResultLauncher<Intent>) {
             val context = binding.root.context
-            val timeStamp = item.timestamp
-            val datetime = timeStamp.toDate().toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDateTime()
+            val date = item.date.toDate()
 
-            binding.tvDay.text = datetime.format(
-                DateTimeFormatter.ofPattern("dd"))
-            binding.tvMonthYear.text = datetime.format(
-                DateTimeFormatter.ofPattern("MM/yyyy"))
+            binding.tvDay.text = SimpleDateFormat("dd", Locale.US).format(date)
+            binding.tvMonthYear.text = SimpleDateFormat("MM/yyyy", Locale.US).format(date)
 
             if (item.patientHadCovid || item.foreignerHadCovid || item.patientHadSymptom) {
-                binding.tvCommunicate.text = " : Có"
+                binding.tvCommunicate.text = context.getString(R.string.text_yes)
                 binding.tvCommunicate.setTextColor(ContextCompat.getColor(context, R.color.yes_color))
             } else {
-                binding.tvCommunicate.text = " : Không"
+                binding.tvCommunicate.text = context.getString(R.string.text_no)
                 binding.tvCommunicate.setTextColor(ContextCompat.getColor(context, R.color.no_color))
             }
 
             if (item.haveSymptom) {
-                binding.tvSymptom.text = " : Có"
+                binding.tvSymptom.text = context.getString(R.string.text_yes)
                 binding.tvSymptom.setTextColor(ContextCompat.getColor(context, R.color.yes_color))
             } else {
-                binding.tvSymptom.text = " : Không"
+                binding.tvSymptom.text = context.getString(R.string.text_no)
                 binding.tvSymptom.setTextColor(ContextCompat.getColor(context, R.color.no_color))
             }
 
             if (item.throughPlace) {
-                binding.tvPlace.text = " : Có"
+                binding.tvPlace.text = context.getString(R.string.text_yes)
                 binding.tvPlace.setTextColor(ContextCompat.getColor(context, R.color.yes_color))
             } else {
-                binding.tvPlace.text = " : Không"
+                binding.tvPlace.text = context.getString(R.string.text_no)
                 binding.tvPlace.setTextColor(ContextCompat.getColor(context, R.color.no_color))
             }
 

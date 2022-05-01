@@ -35,6 +35,9 @@ class LoginActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
 
+        val loading = binding.componentLoading.loading
+        loading.visibility = View.GONE
+
         val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
                 isSentOtp = true
@@ -45,6 +48,7 @@ class LoginActivity : AppCompatActivity() {
                 } else if (e is FirebaseTooManyRequestsException) {
                 }
                 isSentOtp = true
+                loading.visibility = View.GONE
                 Toast.makeText(baseContext, "Có lỗi xảy ra, vui lòng thử lại sau", Toast.LENGTH_SHORT).show()
             }
 
@@ -54,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 storedVerificationId = verificationId
                 isSentOtp = true
+                loading.visibility = View.GONE
             }
         }
 
@@ -61,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
         binding.btnOtp.setOnClickListener {
             if (isSentOtp) {
                 isSentOtp = false
+                loading.visibility = View.VISIBLE
 
                 val phoneNumber = binding.etPhoneNumber.text.toString()
                 val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
@@ -74,8 +80,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
+
             if (isLogined) {
                 isLogined = false
+                loading.visibility = View.VISIBLE
 
                 val otp = binding.etOtp.text.toString()
                 try {
@@ -98,9 +106,11 @@ class LoginActivity : AppCompatActivity() {
                                 Toast.makeText(this, "Có lỗi xảy ra, vui lòng thử lại sau", Toast.LENGTH_SHORT).show()
                             }
                             isLogined = true
+                            loading.visibility = View.GONE
                         }
                 } catch (e: Exception) {
                     isLogined = true
+                    loading.visibility = View.GONE
                     Toast.makeText(this, "Có lỗi xảy ra, vui lòng thử lại sau", Toast.LENGTH_SHORT).show()
                 }
             }

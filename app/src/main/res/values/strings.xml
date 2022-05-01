@@ -5,4 +5,7 @@
     <string name="title_sos">SOS</string>
     <string name="title_map">Bản đồ</string>
     <string name="title_news">Tin tức</string>
+
+    <string name="text_yes"> : Có</string>
+    <string name="text_no"> : Không</string>
 </resources>
