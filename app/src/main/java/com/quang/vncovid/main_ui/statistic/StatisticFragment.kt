@@ -3,17 +3,12 @@ package com.quang.vncovid.main_ui.statistic
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.quang.vncovid.R
 import com.quang.vncovid.databinding.FragmentStatisticBinding
-import com.quang.vncovid.main_ui.news.NewsAdapter
 
 class StatisticFragment : Fragment() {
 

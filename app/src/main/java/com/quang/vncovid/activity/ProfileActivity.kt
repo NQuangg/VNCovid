@@ -73,7 +73,7 @@ class ProfileActivity : AppCompatActivity() {
                 this,
                 { _, year, month, day ->
                     val selectedDateString =
-                        "${if (day < 10) "0$day" else day}/${if (month < 10) "0$month" else month}/$year"
+                        "${if (day < 10) "0$day" else day}/${if (month < 10) "0${month+1}" else month+1}/$year"
                     etBirthday.setText(selectedDateString)
                 },
                 date.year,

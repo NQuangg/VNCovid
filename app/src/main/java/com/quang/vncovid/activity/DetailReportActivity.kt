@@ -130,7 +130,7 @@ class DetailReportActivity : AppCompatActivity() {
                         patientHadCovid = patientHadCovid,
                         patientHadSymptom = patientHadSymptom,
                         place = if (throughPlace) etThroughPlace.text.toString() else "",
-                        symptom = if (haveSymptom) etThroughPlace.text.toString() else "",
+                        symptom = if (haveSymptom) etHaveSympton.text.toString() else "",
                         throughPlace = throughPlace,
                     )
 

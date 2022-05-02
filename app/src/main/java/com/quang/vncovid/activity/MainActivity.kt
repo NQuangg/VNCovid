@@ -14,13 +14,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.quang.vncovid.R
 import com.quang.vncovid.databinding.ActivityMainBinding
 import com.quang.vncovid.main_ui.home.HomeFragment
 import com.quang.vncovid.main_ui.map.MapFragment
-import com.quang.vncovid.main_ui.news.NewsFragment
 import com.quang.vncovid.main_ui.sos.SosFragment
 import com.quang.vncovid.main_ui.statistic.StatisticFragment
 

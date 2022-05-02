@@ -1,18 +1,14 @@
 package com.quang.vncovid.main_ui.sos.tab_recommend
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import com.quang.vncovid.data.model.ContactModel
 import com.quang.vncovid.data.model.RecommendationModel
 import com.quang.vncovid.databinding.FragmentRecommendBinding
-import com.quang.vncovid.main_ui.sos.ContactAdapter
 
 class RecommendFragment: Fragment()  {
     private var _binding: FragmentRecommendBinding? = null

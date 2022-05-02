@@ -178,7 +178,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Trong vòng 14 ngày qua, Anh/Chị có tiếp súc với:"
+                        android:text="Trong vòng 14 ngày qua, Anh/Chị có tiếp xúc với:"
                         android:textColor="@color/color_text" />
 
                     <TableLayout
