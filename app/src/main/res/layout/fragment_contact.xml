@@ -31,7 +31,7 @@
             tools:listitem="@layout/item_contact"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
+            android:paddingTop="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
@@ -39,6 +39,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:indeterminate="true" />
+            android:indeterminate="true"
+            />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

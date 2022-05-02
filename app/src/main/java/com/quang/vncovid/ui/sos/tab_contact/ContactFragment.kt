@@ -1,6 +1,5 @@
 package com.quang.vncovid.ui.sos.tab_contact
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.quang.vncovid.data.model.ContactModel
 import com.quang.vncovid.databinding.FragmentContactBinding
 import com.quang.vncovid.ui.sos.ContactAdapter
-import com.quang.vncovid.util.VNCharacterUtils
-import kotlinx.coroutines.launch
+import com.quang.vncovid.util.convertVNCharacters
 
 class ContactFragment: Fragment()  {
     private var _binding: FragmentContactBinding? = null
@@ -43,14 +39,13 @@ class ContactFragment: Fragment()  {
 
             override fun onQueryTextChange(searchString: String?): Boolean {
                 val searchListContact = listContact.filter {
-                    val provinceString = VNCharacterUtils.convert(it.name)
+                    val provinceString = convertVNCharacters(it.name)
                     provinceString.contains(searchString ?: "")
                 }
                 contactAdapter.submitList(searchListContact)
                 return false
             }
         })
-
 
         binding.recyclerView.adapter = contactAdapter
 

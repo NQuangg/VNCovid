@@ -79,10 +79,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_through_place"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:background="@drawable/background_edittext"
                             android:gravity="top"
-                            android:maxLines="5"
+                            android:lines="5"
                             android:padding="8dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -149,10 +149,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/et_have_sympton"
                             android:layout_width="match_parent"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:background="@drawable/background_edittext"
                             android:gravity="top"
-                            android:maxLines="5"
+                            android:lines="5"
                             android:padding="8dp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
