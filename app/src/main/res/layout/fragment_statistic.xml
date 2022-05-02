@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    tools:context=".ui.statistic.StatisticFragment">
+    tools:context=".main_ui.statistic.StatisticFragment">
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"

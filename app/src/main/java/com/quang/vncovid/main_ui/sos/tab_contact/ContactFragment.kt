@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.sos.tab_contact
+package com.quang.vncovid.main_ui.sos.tab_contact
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.quang.vncovid.data.model.ContactModel
 import com.quang.vncovid.databinding.FragmentContactBinding
-import com.quang.vncovid.ui.sos.ContactAdapter
+import com.quang.vncovid.main_ui.sos.ContactAdapter
 import com.quang.vncovid.util.convertVNCharacters
 
 class ContactFragment: Fragment()  {

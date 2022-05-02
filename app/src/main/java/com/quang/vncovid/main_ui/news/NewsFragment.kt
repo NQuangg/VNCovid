@@ -1,28 +1,27 @@
-package com.quang.vncovid.ui.sos
+package com.quang.vncovid.main_ui.news
 
-import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.quang.vncovid.databinding.FragmentSosBinding
-import com.quang.vncovid.ui.sos.tab_recommend.RecommendFragment
-import com.quang.vncovid.ui.sos.tab_contact.ContactFragment
+import com.quang.vncovid.databinding.FragmentNewsBinding
 
-class SosFragment : Fragment() {
-    private var _binding: FragmentSosBinding? = null
+class NewsFragment : Fragment() {
+
+    private var _binding: FragmentNewsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSosBinding.inflate(inflater, container, false)
+    ): View? {
+
+        _binding = FragmentNewsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val tabLayout = binding.tabLayout
@@ -34,10 +33,7 @@ class SosFragment : Fragment() {
             }
 
             override fun createFragment(position: Int): Fragment {
-               return  when (position) {
-                    0 -> ContactFragment()
-                    else -> RecommendFragment()
-                }
+                return NewsListFragment(tab = position)
             }
         }
 
@@ -45,8 +41,8 @@ class SosFragment : Fragment() {
             tabLayout, newsViewPager
         ) { tab, position ->
             when (position) {
-                0 -> tab.text = "Hotline"
-                1 -> tab.text = "Khuyến cáo"
+                0 -> tab.text = "Việt Nam"
+                1 -> tab.text = "Thế giới"
             }
         }.attach()
 

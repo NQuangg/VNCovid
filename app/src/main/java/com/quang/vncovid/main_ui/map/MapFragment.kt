@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.map
+package com.quang.vncovid.main_ui.map
 
 import android.Manifest
 import android.content.Context

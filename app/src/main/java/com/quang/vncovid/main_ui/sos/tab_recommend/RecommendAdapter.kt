@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.sos.tab_recommend
+package com.quang.vncovid.main_ui.sos.tab_recommend
 
 import android.content.Intent
 import android.view.LayoutInflater

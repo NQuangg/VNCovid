@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.statistic
+package com.quang.vncovid.main_ui.statistic
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
@@ -13,7 +13,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.quang.vncovid.R
 import com.quang.vncovid.databinding.FragmentStatisticBinding
-import com.quang.vncovid.ui.news.NewsAdapter
+import com.quang.vncovid.main_ui.news.NewsAdapter
 
 class StatisticFragment : Fragment() {
 

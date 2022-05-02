@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.sos
+package com.quang.vncovid.main_ui.sos
 
 import android.content.Intent
 import android.net.Uri

@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.home
+package com.quang.vncovid.main_ui.home
 
 import android.content.Context
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.statistic
+package com.quang.vncovid.main_ui.statistic
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

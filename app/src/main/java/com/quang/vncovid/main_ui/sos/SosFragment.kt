@@ -1,27 +1,28 @@
-package com.quang.vncovid.ui.news
+package com.quang.vncovid.main_ui.sos
 
+import android.content.Context
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.quang.vncovid.databinding.FragmentNewsBinding
+import com.quang.vncovid.databinding.FragmentSosBinding
+import com.quang.vncovid.main_ui.sos.tab_recommend.RecommendFragment
+import com.quang.vncovid.main_ui.sos.tab_contact.ContactFragment
 
-class NewsFragment : Fragment() {
-
-    private var _binding: FragmentNewsBinding? = null
+class SosFragment : Fragment() {
+    private var _binding: FragmentSosBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
-        _binding = FragmentNewsBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentSosBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val tabLayout = binding.tabLayout
@@ -33,7 +34,10 @@ class NewsFragment : Fragment() {
             }
 
             override fun createFragment(position: Int): Fragment {
-                return NewsListFragment(tab = position)
+               return  when (position) {
+                    0 -> ContactFragment()
+                    else -> RecommendFragment()
+                }
             }
         }
 
@@ -41,8 +45,8 @@ class NewsFragment : Fragment() {
             tabLayout, newsViewPager
         ) { tab, position ->
             when (position) {
-                0 -> tab.text = "Việt Nam"
-                1 -> tab.text = "Thế giới"
+                0 -> tab.text = "Hotline"
+                1 -> tab.text = "Khuyến cáo"
             }
         }.attach()
 

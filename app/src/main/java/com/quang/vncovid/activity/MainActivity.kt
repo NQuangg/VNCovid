@@ -18,11 +18,11 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.quang.vncovid.R
 import com.quang.vncovid.databinding.ActivityMainBinding
-import com.quang.vncovid.ui.home.HomeFragment
-import com.quang.vncovid.ui.map.MapFragment
-import com.quang.vncovid.ui.news.NewsFragment
-import com.quang.vncovid.ui.sos.SosFragment
-import com.quang.vncovid.ui.statistic.StatisticFragment
+import com.quang.vncovid.main_ui.home.HomeFragment
+import com.quang.vncovid.main_ui.map.MapFragment
+import com.quang.vncovid.main_ui.news.NewsFragment
+import com.quang.vncovid.main_ui.sos.SosFragment
+import com.quang.vncovid.main_ui.statistic.StatisticFragment
 
 
 class MainActivity : AppCompatActivity() {

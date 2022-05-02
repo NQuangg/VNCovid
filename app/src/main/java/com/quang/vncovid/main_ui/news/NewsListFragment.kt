@@ -1,4 +1,4 @@
-package com.quang.vncovid.ui.news
+package com.quang.vncovid.main_ui.news
 
 import android.content.Context
 import android.os.Bundle
