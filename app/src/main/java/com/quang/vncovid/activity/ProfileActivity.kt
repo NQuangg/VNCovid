@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.quang.vncovid.data.model.ProfileModel
-import com.quang.vncovid.data.model.UserModel
 import com.quang.vncovid.databinding.ActivityProfileBinding
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -44,17 +43,16 @@ class ProfileActivity : AppCompatActivity() {
         firestore.collection("account").document(phoneNumber)
             .get()
             .addOnSuccessListener { document ->
-                val userModel = document.toObject(UserModel::class.java)
-                if (userModel != null) {
-                    val profile = userModel.profile
-                    etName.setText(profile.name)
-                    if (profile.isMale) {
+                val profileModel = document.toObject(ProfileModel::class.java)
+                if (profileModel != null) {
+                    etName.setText(profileModel.name)
+                    if (profileModel.isMale) {
                         radioButton1.isChecked = true
                     } else {
                         radioButton2.isChecked = false
                     }
-                    etBirthday.setText(profile.birthday)
-                    etAddress.setText(profile.address)
+                    etBirthday.setText(profileModel.birthday)
+                    etAddress.setText(profileModel.address)
                 } else {
                     val now = LocalDateTime.now()
                     etBirthday.setText(now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")))
@@ -73,7 +71,7 @@ class ProfileActivity : AppCompatActivity() {
                 this,
                 { _, year, month, day ->
                     val selectedDateString =
-                        "${if (day < 10) "0$day" else day}/${if (month < 10) "0${month+1}" else month+1}/$year"
+                        "${if (day < 10) "0$day" else day}/${if (month < 10) "0${month + 1}" else month + 1}/$year"
                     etBirthday.setText(selectedDateString)
                 },
                 date.year,
@@ -92,17 +90,15 @@ class ProfileActivity : AppCompatActivity() {
                 val address = etAddress.text.toString()
 
                 if (name.isNotEmpty() && address.isNotEmpty()) {
-                    val userModel = UserModel(
-                        profile = ProfileModel(
-                            name = name,
-                            isMale = radioButton1.isChecked,
-                            birthday = birthday,
-                            address = address,
-                        )
+                    val profile = ProfileModel(
+                        name = name,
+                        isMale = radioButton1.isChecked,
+                        birthday = birthday,
+                        address = address,
                     )
 
                     firestore.collection("account").document(phoneNumber)
-                        .set(userModel)
+                        .set(profile)
                         .addOnSuccessListener {
                             loading.visibility = View.GONE
                             startActivity(Intent(this, ReportActivity::class.java))
