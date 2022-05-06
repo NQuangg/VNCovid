@@ -1,5 +1,6 @@
 package com.quang.vncovid.main_ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,22 +20,22 @@ class HomeViewModel : ViewModel() {
     val chartCovidList: LiveData<List<ChartCovidModel>> = _chartCovidList
 
     fun getSumPatient() {
-        try {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
                 _sumPatient.value = apiService.getSummPatient().data
-            }
-        } catch (e: Exception) {
+            } catch (e: Exception) {
 
+            }
         }
     }
 
     fun getChartCovid() {
-        try {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
                 _chartCovidList.value = apiService.getChartCovid().list
-            }
-        } catch (e: Exception) {
+            } catch (e: Exception) {
 
+            }
         }
     }
 }

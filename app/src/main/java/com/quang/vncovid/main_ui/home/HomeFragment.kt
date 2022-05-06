@@ -45,26 +45,6 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val lineChart = binding.lineChart
-        val swipeRefresh = binding.swipeRefresh
-
-        context?.let { ContextCompat.getColor(it, R.color.color_primary) }
-            ?.let { swipeRefresh.setColorSchemeColors(it) }
-        swipeRefresh.setOnRefreshListener {
-            binding.tvConfirm.text = "###.###"
-            binding.tvPlusConfirm.text = "###.###"
-            binding.tvCuring.text = "###.###"
-            binding.tvPlusCuring.text = "###.###"
-            binding.tvRecovered.text = "###.###"
-            binding.tvPlusRecovered.text = "###.###"
-            binding.tvDeath.text = "###.###"
-            binding.tvPlusDeath.text = "###.###"
-            lineChart.data = LineData()
-            lineChart.invalidate()
-
-            homeViewModel.getSumPatient()
-            homeViewModel.getChartCovid()
-            swipeRefresh.isRefreshing = false
-        }
 
         homeViewModel.sumPatient.observe(viewLifecycleOwner) {
             binding.tvConfirm.text = formatNumber(it.confirmed)

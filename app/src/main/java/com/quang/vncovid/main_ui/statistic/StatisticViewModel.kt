@@ -17,14 +17,15 @@ class StatisticViewModel : ViewModel() {
     val patientProvinces: LiveData<List<ProvinceModel>> = _patientProvinces
 
     fun getPatientProvinces() {
-        try {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
                 _allPatientProvinces.value = apiService.getAllPatientProvinces().list
                 _patientProvinces.value = _allPatientProvinces.value
-            }
-        } catch (e: Exception) {
+            } catch (e: Exception) {
 
+            }
         }
+
     }
 
     fun searchPatientProvinces(provinceName: String) {
